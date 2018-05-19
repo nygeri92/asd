@@ -4,11 +4,11 @@
 \graphicspath{ {img/} }
 \renewcommand{\baselinestretch}{1.5}
 \newtheorem{notat}{Jelölés}[section]
-\newtheorem{defin}{Definició}[section]
+\newtheorem{defin}{Definíció}[section]
 \newtheorem{megj}{Megjegyzés}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{tetel}{Tétel}[section]
-\newtheorem{biz}{Bizonyitás}[section]
+\newtheorem{biz}{Bizonyítás}[section]
 
 
 \begin{document}
@@ -339,9 +339,14 @@ Tehát keresni kell egy maximális párosítást, és az megmondja, hogy mi a mi
 
 \subsection{Egyéb algoritmusok}
 
+Vegyünk további algoritmusokat, melyekkel maximális párosítást tudunk keresni gráfokban, hogy jobb rálátásunk legyen a több lehetséges megoldásra is.
+
 \subsubsection{Magyar módszer}
 
-
+Az eljárás alapgondolata az, hogy egy tetszőleges párosításból kiindulva ismételten javítható utakat keres egészen addig, amíg ilyen létezik. (Egy olyan utat, ami párosítatlan $A$-beli pontból indul és minden második éle az aktuális párosításhoz tartozik, alternáló útnak hívjuk.) Ha talál egy javító utat, akkor az ebben lévő, aktuális párosításhoz tartozó éleket kidobja a párosításokból, az úton lévő, párosításban nem szereplő éleket pedig beveszi a párosításba; így a párosítás élszáma eggyel
+nő. Ha pedig már nincs több javító út, akkor egy egyszerü tétel garantálja, hogy az
+aktuális párosítás maximális. A bizonyítás alapgondolata a következő: ha az algoritmus már leállt és az $M$ párosítást adta, akkor jelöljük $U$-val az $M$ által le nem
+fedett $A$-beli pontok halmazát, $T$-vel az $U$-ból alternáló úton elérhető $B$-beli pontok halmazát, $T$-vel pedig a $T'$-beli pontok $M$ szerint vett párjait. Ekkor könnyen belátható, hogy minden $(T \cup U)$-beli pont minden szomszédja $T'$-ben van. Ebből pedig következik, hogy $T' \cup (A \leq (T \cup U))$ ugyanolyan méretü lefogó ponthalmaz $G$-ben, mint $M$ éleinek száma, így $M$-nél nagyobb párosítás nem lehet. ~\cite{frank2002magyar}\\ 
 
 
 \subsubsection{Alternáló utas algoritmus}
