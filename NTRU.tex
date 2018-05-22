@@ -36,6 +36,19 @@ Nyulasi Gergely\\
 \pagebreak
 
 \section{Bevezetés}
+[Ide írj egy rövid bevezetőt arról hogy miről fog szólni a szakdolgozat, ne menj részletekbe és ne írj definíciókat, ez egy általános dolog amit egy nem szakértőnek is meg kell értenie. Most átraktam ide egy későbbi fejezetből a leírásod]
+
+Manapság nagy hangsúlyt fektetünk a minőségre és annak biztosítására, mivel a minőséggel az értéket lehet reprezentálni és minél magasabb a minőség annál értékesebb az adott dolog, amit képvisel. A minőséget tesztelésekkel, próbákkal és egyéb módokon tudjuk ellenőrizni.
+Jelen esetben minket jobban érdekel a szoftvertesztelés és annak módjait járjuk körbe, de ezt majd később látni is fogjuk.\\
+
+\subsection{Téma aktualitása}
+[Itt írj egy kicsit arról hogy miért aktuálius a téma. Lehet rizsázni hogy nő az alkalamzások komplexitása ezért egyre ofntosabb a tesztelés, de nicns elég ember ezért senki nem csinálja és milyen jó lenne egyébknét is automatizálni, blablabla..]
+
+\subsection{Célkitűzés}
+[Ismertesd hogy mi a munkával a célod,  egy olyan matematikai modellt szeretnél adni ami segíti a tesztelést és hogy ez miért jó.]
+
+\subsection{Hasonló munkák}
+[Rövid kitérő arra hogy mi a mai "state of the field" azaz milyen megoldások, kutatási irányok vannak a tieden kívűl.]
 
 1. Bevezetés - Célkitűzés, kontextusba helyezés\\
 2. Probléma bemutatása - bemutatod az automata tesztelés mi, miért jó, mi az ami nehéz\\
@@ -46,13 +59,14 @@ Nyulasi Gergely\\
 
 \section{Probléma bemutatása}
 
+<<<<<<< HEAD
 Mindenki szeretné a feladatait minél hatékonyabban, optimálisan megoldani, hogy minél kevesebb idővel minél több feladatot tudjon megoldani. Megmutatjuk hogy a tesztelésnél is fontos ez a szempont és hogyan tudjuk elérni ezt, több különböző feladat esetén is.
 
+=======
+[Minden fejezet cím alá írj egy rövid összefogalót arról hogy miről fog szólni az adott rész, ide például írhatod hogy részletes bemutatásra kerül az alkalmazás terület és azonosítod azoakt a problémákat amiket meg akarsz oldani.]
+>>>>>>> 05b350fb43b08aee1af8889b60f674f06e882467
 
 \subsection{Tesztelés alapjai, szoftvertesztelés}
-
-Manapság nagy hangsúlyt fektetünk a minőségre és annak biztosítására, mivel a minőséggel az értéket lehet reprezentálni és minél magasabb a minőség annál értékesebb az adott dolog, amit képvisel. A minőséget tesztelésekkel, próbákkal és egyéb módokon tudjuk ellenőrizni.
-Jelen esetben minket jobban érdekel a szoftvertesztelés és annak módjait járjuk körbe, de ezt majd később látni is fogjuk.\\
 
 A teszteléseknél megszokhattuk, hogy nem létezik maximális lefedettség, de minél nagyobb lefedettséget megpróbálhatunk elérni. Tesztelések során több különböző teszttel is találkozhatunk, melyek különböző lefedettségeket tekintenek fontosnak, ilyen például a smoke test, regressziós teszt, stb.\\
 
@@ -70,6 +84,45 @@ Teszteset: bemeneti értékek, végrehajtási előfeltételek, elvárt eredmény
 \end{defin}
 
 Azaz a tesztelés alatt minél több hibát szeretnénk feltárni, megtalálni. Persze az, hogy ha találunk hibákat az nem jelenti, hogy minden hibát megtaláltunk. Nem könnyű megtalálni az összes hibát, vagy a mi esetünkben, amint majd látunk és részletesen be fogunk mutatni az összes élet egy gráfban. De hogy értsük is a kifejezéseket mostantól definiáljuk azokat is.\\
+
+Majd folytassuk a teszt, állapotátmenetek és scenario-k megértésével, mivel a fentiekben már kifejtettünk pár definíciót, ami segítségünkre van:
+
+\begin{defin}
+Teszt: egy vagy több teszteset halmaza. [IEEE 829]. ~\cite{htb:masterfield}
+\end{defin}
+
+Minél több teszt sikeres egy adott tesztelés során, annál  
+Most hogy már a teszt fogalma világos, ekkor a szoftver fogalmát definiáljuk:
+
+\begin{defin}
+Szoftver: számitógépes programok, folyamatok és esetlegesen a számitógépes rendszer üzemelésére vonatkozó dokumentációk és adatok. [IEEE 610]. ~\cite{htb:masterfield}
+\end{defin}
+
+Továbbiakban az automatizálásról lesz szó, és annak hasznosságáról.
+
+\subsection{Automata szoftvertesztelés}
+
+Mit is értünk automatizálás alatt?
+Olyan folyamat, amikor technológiák alkalmazása során az emberi munkát csökkentjük, hogy minél alacsonyabb legyen a humán erőforrás igénybevétele. 
+Persze több erőforrást vesz igénybe és több tudást az elején, de a többszöri futások miatt, azonban idővel megtérül a bele fektetett idő és munka. Igy hosszabb távon megéri automatizálni a teszteket, főleg ha hosszabbak, vagy bonyolultabbak.\\
+Automatizálás mellett szól: a termelékenység növelése, a költségek csökkentése hosszú távon, és nem utolsósorban a minőség javítása és az alacsonyabb hibaszázalékok elérése.\\
+Az automatizált szoftver tesztelés definíciója a következő:
+
+\begin{defin}
+Teszt automatizálás: valamilyen szoftver használata különböző teszttevékenységek támogatására, mint például tesztmenedzsment, müszaki teszttervezés, tesztek végrehajtása, teszteredmények vizsgálata. ~\cite{htb:masterfield}
+\end{defin}
+
+Azaz bizonyos szoftverek segítségével teszteseteket hajtunk végre hogy nekünk ne kelljen manuálisan(humán erőforrás csökkentése) elvégezni őket. 
+
+\subsection{Teszt lefedettség}
+[Iee írd le, egyelőre formalizálás nélkül, hogy mi a teszt lefedettség. Azaz a rendszer funkcióit hogyan érdemes tesztelni, végállapotok tesztelése, stb. Itt említsd meg mindenképpen hogy a különböző teszt módszerek és szintek különböző lefedettésgeket kívánnak és te ezt a problémát fogod formalizálni és megoldani, de egyelőre ne tértj ki részletekre].
+
+
+\section{Formális modell}
+[Ide írj egy olyan bevezetőt, ami leírja hogy ez a fejezet a korábban megfogalmazott tesztelési problémák, matematikai formalizmusokkal történő leírására szolgál. Az így leírt problémára alkalamzhatók a matematika bizonyított eszközei, innetől dőlhetnek a definíciók és képletek :)]
+
+\subsection{Szükséges alapismeretek}
+[Ide írj valami ilyet: a formális modell matematikai eszközkészletének megértéshéz az alábbi fogalmakra lesz szükségünk. Ezek után ide gyűjtsd ki az összes olyan "gyenge" definíciót ami nem szigorúan tartozik egy-egy adott részhez, pl. azt hogy mi a gárf, mi a mátrix, stb. Ez egyfajta glossary ha úgy tetszik.]
 
 Most ismertetünk pár alapfogalmat, amit a kombinatorikában ismerünk és hasznosnak fogunk venni a bizonyítások és ismertetések során.\\
 
@@ -133,40 +186,34 @@ Mivel egy körben (útban) szereplő minden csúcs különböző, ezért a Hamil
 Ha a véges G gráfban létezik Hamilton-kör (ill. Hamilton-út), akkor G-nek k tetszőleges pontját törölve, a keletkező gráfnak legfeljebb k (ill. k+1) komponense van. ~\cite{szam:Fleiner}
 \end{defin}
 
-Ezek a definíciók sajnos számunkra csak kis mértékben hasznosak. Mivel nekünk fontos az is hogy több különböző séta is áthaladhasson ugyanazon a ponton is vagy többször használhassunk egy élet, ilyen például, ha ugyanabba a pontba érkezünk, de több elágazás van amin szeretnénk elindulni, vagy ilyen ha egy élből több él is indul ki, amelyek egyenlő fontosak és csak az előbbi élből tudunk indulni.\\
+Ezek a definíciók sajnos számunkra csak kis mértékben hasznosak. Mivel nekünk fontos az is hogy több különböző séta is áthaladhasson ugyanazon a ponton is vagy többször használhassunk egy élet, ilyen például, ha ugyanabba a pontba érkezünk, de több elágazás van amin szeretnénk elindulni, vagy ilyen ha egy élből több él is indul ki, amelyek egyenlő fontosak és csak az előbbi élből tudunk indulni.[TODO: ezt a mondatot bontsd szét kicsit]\\ 
 
-Majd folytassuk a teszt, állapotátmenetek és scenario-k megértésével, mivel a fentiekben már kifejtettünk pár definíciót, ami segítségünkre van:
+A gráfokon való lefedést többféleképpen lehet nézni. Egyrészt pontok lefedése-, valamint élek lefedéséről lehet beszélni. Ezek alkalmazhatóak különböző feladatok megoldására vagy optimalizálásra.\\
+Az útlefedést vissza tudjuk vezetni a páros gráfokban alkalmazott maximális párosítás keresésre.\\
+
+Nézzük meg mit is jelent az hogy egy gráf páros, de előtte meg kell még értenünk azt is hogy mit értünk gráf színezésen is.
 
 \begin{defin}
-Teszt: egy vagy több teszteset halmaza. [IEEE 829]. ~\cite{htb:masterfield}
+A $G$ gráf k szinnel szinezhető, ha $G$ minden csúcsa kiszinezhető k adott szin valamelyikére úgy, hogy $G$ bármely élének két végpontja különböző szinü legyen. A $G$ gráf kromatikus száma $\chi(G) = k$, ha $G$ kiszinezhető k szinnel, de k-1 szinnel még nem. ~\cite{szam:Fleiner}
 \end{defin}
 
-Minél több teszt sikeres egy adott tesztelés során, annál  
-Most hogy már a teszt fogalma világos, ekkor a szoftver fogalmát definiáljuk:
+Amikor egy gráf $kiszinezéséről$ beszélünk (hacsak nem jelezzük az ellenkezőjét), mindig a csúcsoknak a fenti szabály szerinti színezésére gondolunk. Egy konkrét színezés esetén az azonos színűre festett csúcsok halmazát (amely halmaz tehát nem feszíthet élt) $szinosztálynak$ nevezzük. Jegyezzük meg, hogy a színosztály mindig a színezéstől függ, és általában nem egyértelmű, hogy egy $G$ gráfot hogyan is kell $\chi(G)$ színnel kiszínezni.
 
 \begin{defin}
-Szoftver: számitógépes programok, folyamatok és esetlegesen a számitógépes rendszer üzemelésére vonatkozó dokumentációk és adatok. [IEEE 610]. ~\cite{htb:masterfield}
+A $G$ gráf páros gráf, ha $G$ két szinnel kiszinezhető, azaz, ha $\chi(G) \leq 2$. ~\cite{szam:Fleiner}
 \end{defin}
 
-Továbbiakban az automatizálásról lesz szó, és annak hasznosságáról.
+\begin{megj}
+A fenti definíció azzal ekvivalens, hogy a $G$ gráf pontosan akkor páros, ha $G$ csúcsai két diszjunkt halmazba oszthatók úgy, hogy $G$ minden éle a két halmaz között fut, azaz mindkét halmazban van egy-egy csúcsa.(Ez egyébként a páros gráf definíciója.) Minden páros gráfnak van tehát két színosztálya, amelyek között az élei futnak. Azonban ez a két színosztály nem feltétlenül egyértelmű: például az n pontból álló üres gráf csúcsainak tetszőleges két osztályra bontása teljesíti a feltételt.
+\end{megj}
 
-\subsection{Automata szoftvertesztelés}
+Ha már tudjuk hogy mit jelent a páros gráf akkor meg tudjuk határozni a párosítást valamit a maximális párosításokat egy gráfban.
 
-Mit is értünk automatizálás alatt?
-Olyan folyamat, amikor technológiák alkalmazása során az emberi munkát csökkentjük, hogy minél alacsonyabb legyen a humán erőforrás igénybevétele. 
-Persze több erőforrást vesz igénybe és több tudást az elején, de a többszöri futások miatt, azonban idővel megtérül a bele fektetett idő és munka. Igy hosszabb távon megéri automatizálni a teszteket, főleg ha hosszabbak, vagy bonyolultabbak.\\
-Automatizálás mellett szól: a termelékenység növelése, a költségek csökkentése hosszú távon, és nem utolsósorban a minőség javítása és az alacsonyabb hibaszázalékok elérése.\\
-Az automatizált szoftver tesztelés definíciója a következő:
+\subsection{Rendszer modell}
+[Itt írd le magát a rendszer modelljét, hogy vanna állapotk és átmenetek, de egyelrőe ne írj magáról a lefedéskről és utakról.]
 
-\begin{defin}
-Teszt automatizálás: valamilyen szoftver használata különböző teszttevékenységek támogatására, mint például tesztmenedzsment, müszaki teszttervezés, tesztek végrehajtása, teszteredmények vizsgálata. ~\cite{htb:masterfield}
-\end{defin}
-
-Azaz bizonyos szoftverek segítségével teszteseteket hajtunk végre hogy nekünk ne kelljen manuálisan(humán erőforrás csökkentése) elvégezni őket. Ebben az esetben gráfok bejárását fogjuk érteni
-
-\begin{defin}
 Feltételezzük, hogy a tesztelendő rendszer különböző rendszer állapotokkal rendelkezik, melyek között nem szabad az átjárás. Ilyen állapot lehet például a bejelentkező képernyő, ahonnan át lehet menni a user control panelre vagy az elfelejtett jelszó képernyőre. User control panel $->$ elfelejtett jelszó átmeneti viszont nem létezik. Azaz ezeket a rendszer állapotokat tekinthetjük egy gráf különböző csúcsainak, valamint a köztük lévő élek lesznek azon relációk, hogy melyik állapotból érhetjük el a másikat. Ezt a gráfot vegyük mostantól G gráfnak.
-\end{defin}
+
 
 \begin{defin}
 Állapotátmenet: átmenet egy komponens vagy rendszer két állapota között. ~\cite{htb:masterfield}
@@ -203,7 +250,10 @@ $D = (V,A)$ irányitott gráf, ha $V \neq \emptyset$ és $A \subseteq V^2$. (Min
 Egy $G$ (irányitott) gráf aciklikusnak mondunk, ha $G$ nem tartalmaz (irányitott) kört. ~\cite{szam:Fleiner}
 \end{defin}
 
-Ezek után szeretnénk olyan gráf bejárást találni, amivel az összes csúcsot vagy összes élet le tudjuk fedni.
+\subsection{Formalizált probléma}
+[Itt írod le a az egész lényegét, hogy van a grádof amin bejárásokat keresel, és hogy ez hogy viszonyul az egyes tesztelési fogalmakhoz. Itt igyekezz akár egy mondaotn belül is összekötni a két világot, ez egy kritikus fejezet, emrt valószínűleg ezt fogják leginkább nézni mindkét "oldalról"]
+
+Ezek után szeretnénk olyan gráf bejárást találni, amivel az összes csúcsot vagy összes élet le tudjuk fedni [a rendszer állapotátmeneti gráfjában.].
 Ezt a két esetet többféle módon meg tudjuk oldani algoritmusokkal.
 Viszont a lehető legkevesebb úttal megoldani ezt már nem olyan egyszerű.\\
 Ennek az optimalizálására keresünk megoldást a következőkben.
@@ -229,33 +279,9 @@ Smoke teszt: A definiált, illetve tervezett tesztek egy olyan halmaza, amely ko
 Ezek a főbb tesztek, amelyeket tekinteni fogunk és megnézzük, hogy tudjuk-e esetleg modellezni őket.\\
 \pagebreak
 
-
-\section{Alap ötlet}
-
-\subsection{Gráf alapismeretek}
-
-A gráfokon való lefedést többféleképpen lehet nézni. Egyrészt pontok lefedése-, valamint élek lefedéséről lehet beszélni. Ezek alkalmazhatóak különböző feladatok megoldására vagy optimalizálásra.\\
-Az útlefedést vissza tudjuk vezetni a páros gráfokban alkalmazott maximális párosítás keresésre.\\
-
-Nézzük meg mit is jelent az hogy egy gráf páros, de előtte meg kell még értenünk azt is hogy mit értünk gráf színezésen is.
-
-\begin{defin}
-A $G$ gráf k szinnel szinezhető, ha $G$ minden csúcsa kiszinezhető k adott szin valamelyikére úgy, hogy $G$ bármely élének két végpontja különböző szinü legyen. A $G$ gráf kromatikus száma $\chi(G) = k$, ha $G$ kiszinezhető k szinnel, de k-1 szinnel még nem. ~\cite{szam:Fleiner}
-\end{defin}
-
-Amikor egy gráf $kiszinezéséről$ beszélünk (hacsak nem jelezzük az ellenkezőjét), mindig a csúcsoknak a fenti szabály szerinti színezésére gondolunk. Egy konkrét színezés esetén az azonos színűre festett csúcsok halmazát (amely halmaz tehát nem feszíthet élt) $szinosztálynak$ nevezzük. Jegyezzük meg, hogy a színosztály mindig a színezéstől függ, és általában nem egyértelmű, hogy egy $G$ gráfot hogyan is kell $\chi(G)$ színnel kiszínezni.
-
-\begin{defin}
-A $G$ gráf páros gráf, ha $G$ két szinnel kiszinezhető, azaz, ha $\chi(G) \leq 2$. ~\cite{szam:Fleiner}
-\end{defin}
-
-\begin{megj}
-A fenti definíció azzal ekvivalens, hogy a $G$ gráf pontosan akkor páros, ha $G$ csúcsai két diszjunkt halmazba oszthatók úgy, hogy $G$ minden éle a két halmaz között fut, azaz mindkét halmazban van egy-egy csúcsa.(Ez egyébként a páros gráf definíciója.) Minden páros gráfnak van tehát két színosztálya, amelyek között az élei futnak. Azonban ez a két színosztály nem feltétlenül egyértelmű: például az n pontból álló üres gráf csúcsainak tetszőleges két osztályra bontása teljesíti a feltételt.
-\end{megj}
-
-Ha már tudjuk hogy mit jelent a páros gráf akkor meg tudjuk határozni a párosítást valamit a maximális párosításokat egy gráfban.
-
+\section{A probléma megoldása: Pont- és Útfedési algoritmusok}
 \subsection{Maximális párositás}
+[Ezt a fejezetet kicsit "árávnak" érezm az egészben, legyen jobbna bevezetve hogy mirét van itt és mi a célja]
 
 \begin{defin}
 Adott $G$ gráf esetén $\nu(G)$ jelöli a $G$ független élhalmazai közül a maximális méretét, azaz $G$ maximális párositásának elemszámát. ~\cite{szam:Fleiner}
@@ -270,7 +296,8 @@ Legyen $(S,\leq)$ pár egy részben rendezett pár, ahol $S$ a pár és a  $\leq
 \item ha $s \leq t$ és $t \leq u$ akkor $s \leq u$ (tranzitív),
 \end{enumerate}
 ahol minden $s,t,u \in S$. Használjuk az $s < t$ kifejezést, ha $s \leq t$ és $s \neq t$ is teljesül. Jelenleg csak a $véges$ részben rendezett párokat, azaz S véges.
-Legyen $C \in S$ olyan részpár, amit $láncnak$ nevezünk, ha $s \leq t$ vagy $t \leq s$, ahol minden $s,t \in C$. Legyen $A \in S$ olyan részpár, amit $antiláncnak$ nevezünk, ha $s \nless t$ és $t \nless s$ teljesül minden $s,t \in A$-ra. Ennél fogva ha $C$ lánc és $A$ antilánc akkor
+Legyen $C \in S$ olyan részpár, amit $láncnak$ nevezünk, ha $s \leq t$ vagy $t \leq s$, ahol minden $s,t \in C$. Legyen $A \in S$ olyan részpár, amit $antiláncnak$ nevezünk, ha $s \nless t$ és $t \nless s$ teljesül minden $s,t 
+\in A$-ra. Ennél fogva ha $C$ lánc és $A$ antilánc akkor
 $$|C \cap A| \leq 1.$$\\
 Ebből következnek az alábbi állítások. ~\cite{bomze1999maximum}\\
 
@@ -308,12 +335,15 @@ Legyen $D = (V,A)$ egy aciklikus irányított gráf, aminek pontosan egy kiindul
 Legyen $D = (V,A)$ egy aciklikus irányított gráf és $B \subseteq A$. Ekkor a minimális útfedések száma $B$-ben megegyezik a $|C \cap B|$ maximumával, ahol $C$ az irányított vágások számával. ~\cite{bomze1999maximum}
 \end{tetel}
 
+<<<<<<< HEAD
 \pagebreak
 
 \section{Pont- és Útfedési algoritmusok}
 
 
 
+=======
+>>>>>>> 05b350fb43b08aee1af8889b60f674f06e882467
 \subsection{Útlefedési algoritmus gráfon}
 
 Vegyük $G$ gráfot, aminek a csúcsai a következők:
@@ -361,17 +391,22 @@ kép\\
 Ha pedig nincs javitó alternáló út, akkor M maximális párositás, és könnyen található egy |M| csúcsot tartalmazó lefogó ponthalmaz is.
 
 
-\section{Példa}
+\section{A megoldás alkalmazása egy példán}
+[Írd le, hogy demonstárlandó az elképzelés műkődését, most gy egyszerű rendszeren be fogod mutatni a dolgot.]
 
-\subsection{Példa gráf}
+\subsection{A példa rendszer}
+[Ide írd, hogy mi a példa rendszered és mit csinál, hétköznpai nyelven. Ez szándékosan informális, mert ez az egész fejezet arró lszól, hogy hogy lehet egy való világ beli rendszert így lemodellezni és letesztelni]
+
+\subsection{A példa rendszer gráfja}
+[Itt formalizálod az előzőleg szavakkal leírt rendszert és térsz ki röviden erre a folyamatra]
 
 \includegraphics[scale=0.5]{graf}
 
 \subsection{Algoritmus alkalmazása}
+[Itt a gárfon lefuttatod valamelyik algoritmust, a lépéseit szerintem nem kell ílrni, eléga kimenetet. Fontos, hogy a kimenetet "vissza transzformáld" emberi nyelvre, tehát azon túl hogy leírod a konkrét kimenetet, pl hogy C1->C2->C5->C9..  írd le ennek az értelmezését is azaz hogy "van három teszt esetünk, amik a bejelentkezést, vásárlást...]
 
-
-
-\section{Konklúzió}
+\section{Összefoglalás}
+[Értékeld az elvégzett munkát és adj pár továbbfejlesztési irányt]
 
 
 \newpage
