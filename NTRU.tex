@@ -46,7 +46,8 @@ Nyulasi Gergely\\
 
 \section{Probléma bemutatása}
 
-asd
+Mindenki szeretné a feladatait minél hatékonyabban, optimálisan megoldani, hogy minél kevesebb idővel minél több feladatot tudjon megoldani. Megmutatjuk hogy a tesztelésnél is fontos ez a szempont és hogyan tudjuk elérni ezt, több különböző feladat esetén is.
+
 
 \subsection{Tesztelés alapjai, szoftvertesztelés}
 
@@ -312,6 +313,7 @@ Legyen $D = (V,A)$ egy aciklikus irányított gráf és $B \subseteq A$. Ekkor a
 \section{Pont- és Útfedési algoritmusok}
 
 
+
 \subsection{Útlefedési algoritmus gráfon}
 
 Vegyük $G$ gráfot, aminek a csúcsai a következők:
@@ -335,6 +337,8 @@ Majd ebben a $G$ illetve $G'$ gráfban minden $v$ csúcsból csinálunk egy $v_{
 Ekkor összekötjük $v_{alsó}$-t $u_{felső}$-vel akkor és csak akkor, ha $u$ nagyobb mint $v$. Beláthatjuk, hogy ha az egész részben rendezett halmaz, vagyis $G'$ egy lánc, akkor van olyan párosítás ebben a páros gráfban, ami két pont kivételével mindent bepárosít.
 Hasonlóan, a részben rendezett halmaz felbomlik $k$ lánc uniójára akkor és csak akkor ha van olyan párosítás, ami $2k$ pont kivételével mindent bepárosít.\\
 Tehát keresni kell egy maximális párosítást, és az megmondja, hogy mi a minimális láncfelbontás. Sőt, magukat a láncokat is megtalálhatjuk ebből.
+
+Ekkor a következő 
 \pagebreak
 
 \subsection{Egyéb algoritmusok}
