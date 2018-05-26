@@ -43,7 +43,7 @@ A második fejezetben ismertetni fogjuk, hogy milyen problémáink lehetnek a te
  Mit is jelent a szoftvertesztelés, vagy automatizált szoftvertesztelés, valamint mit is jelentenek a mi szempontunkból.\\
 A harmadik fejezetben modellezük a teszteléseket, ismertetünk gráfelméleti alapfoglamakat, valamint részletesebb tételeket is amik segitségünkre lesznek a továbbiak folyamán.\\
 A negyedik fejezetben bemutatjuk a pont és út fedéseket hogyan tudjuk hasznositani a tesztelés során és miért fontosak ezek nekünk.\\
-Az ötödik fejezetben egy valódi példára mutatjuk meg hogyan is müködnek az algoritmusok.\\
+Az ötödik fejezetben egy valódi példára mutatjuk meg hogyan is müködnek az algoritmusok. Milyen teszteseteket generálunk.\\
 Végül összefoglaljuk a tapasztalatainkat, rámutatunk hogy miért is fontosak ezek és hogy mikre lehet használni ezt a tudást.\\
 
 
@@ -53,22 +53,23 @@ Jelen esetben minket jobban érdekel a szoftvertesztelés és annak módjait já
 \subsection{Téma aktualitása}
 [Itt írj egy kicsit arról hogy miért aktuálius a téma. Lehet rizsázni hogy nő az alkalamzások komplexitása ezért egyre ofntosabb a tesztelés, de nicns elég ember ezért senki nem csinálja és milyen jó lenne egyébknét is automatizálni, blablabla..]
 
-Ahhoz hogy átfogó képet kaphassunk a szoftver tesztelésről, elöszőr meg kell értenünk miért olyan fontosak számunkra a szoftverek és használatuk. 
+Ahhoz hogy átfogó képet kaphassunk a szoftvertesztelésről, elöszőr meg kell értenünk miért olyan fontosak számunkra a szoftverek és használatuk.\\ 
+A szoftverek mindannapjaink segitésére szolgálnak. Igy a biztonságos használatuk, megbizhatóságuk nagy fontosságot élvez. Erre használjuk a tesztelést, hogy meggyőzödjünk mennyire biztonságosak, megbizhatóak ezek.\\
+
+
 
 
 
 \subsection{Célkitűzés}
 [Ismertesd hogy mi a munkával a célod,  egy olyan matematikai modellt szeretnél adni ami segíti a tesztelést és hogy ez miért jó.]
 
+Célunk az lenne, hogy a szoftvertesztelést könyebben le tudjuk modellezni a matematika nyelvére. Ezáltal eg
+
 \subsection{Hasonló munkák}
 [Rövid kitérő arra hogy mi a mai "state of the field" azaz milyen megoldások, kutatási irányok vannak a tieden kívűl.]
 
-1. Bevezetés - Célkitűzés, kontextusba helyezés\\
-2. Probléma bemutatása - bemutatod az automata tesztelés mi, miért jó, mi az ami nehéz\\
-3. Formalizálás - a rendszer gráfos modelljének leírása\\
-4. - Pont és útfedések - a modellen bemutatod hogy lehet a problémákat megmutatni pont és útfedésekkel\\
-5. “Valódi példa” - ez a programozós rész, ahol rövid példán bemutatod\\
-6. Összefoglalás - Tapasztalatok ,elvont következtetések, jövőbeni irány\\
+
+
 
 \section{Probléma bemutatása}
 
@@ -266,6 +267,12 @@ Egy $G$ (irányitott) gráf aciklikusnak mondunk, ha $G$ nem tartalmaz (irányit
 \subsection{Formalizált probléma}
 [Itt írod le a az egész lényegét, hogy van a grádof amin bejárásokat keresel, és hogy ez hogy viszonyul az egyes tesztelési fogalmakhoz. Itt igyekezz akár egy mondaotn belül is összekötni a két világot, ez egy kritikus fejezet, emrt valószínűleg ezt fogják leginkább nézni mindkét "oldalról"]
 
+
+
+
+
+
+
 Ezek után szeretnénk olyan gráf bejárást találni, amivel az összes csúcsot vagy összes élet le tudjuk fedni [a rendszer állapotátmeneti gráfjában.].
 Ezt a két esetet többféle módon meg tudjuk oldani algoritmusokkal.
 Viszont a lehető legkevesebb úttal megoldani ezt már nem olyan egyszerű.\\
@@ -381,7 +388,7 @@ Ekkor összekötjük $v_{alsó}$-t $u_{felső}$-vel akkor és csak akkor, ha $u$
 Hasonlóan, a részben rendezett halmaz felbomlik $k$ lánc uniójára akkor és csak akkor ha van olyan párosítás, ami $2k$ pont kivételével mindent bepárosít.\\
 Tehát keresni kell egy maximális párosítást, és az megmondja, hogy mi a minimális láncfelbontás. Sőt, magukat a láncokat is megtalálhatjuk ebből.
 
-Ekkor a következő 
+Ekkor a következő lépés, hogy egy maximális párositást kereső algorimtus segitségével lefutatjuk az elöbbiekben leirt algoritmusunkat, igy könyebben megkaphatjuk a teszteseteket, amiket keresünk.
 \pagebreak
 
 \subsection{Egyéb algoritmusok}
@@ -407,18 +414,66 @@ Ha pedig nincs javitó alternáló út, akkor M maximális párositás, és kön
 \section{A megoldás alkalmazása egy példán}
 [Írd le, hogy demonstárlandó az elképzelés műkődését, most gy egyszerű rendszeren be fogod mutatni a dolgot.]
 
+Vegyünk egy rendszert, aminek a következő állapotai vannak:
+\item Bejelentkezés
+\item Sikertelen bejelentkezés
+\item Elfelejtett jelszó
+\item Sikeres bejelentkezés
+\item Felhasználó adatlapja
+\item Kijelentkezés
+\item Felhasználó adatlap módositás
+\item Egyenleg lekérése
+\item Vásárlás
+\item Sikeres módosizás
+\item Sikertelen módositás
+\item Sikertelen vásárlás
+\item Sikeres vásárlás
+
+Ezek között az állapotok között eljuthatunk egyikből a másikba, de nem mindenhonnan vezet mindenhova út, amit a lenti modell mutatja is.
+Ez egy egyszerü remdszer és továbbiakban ezen fogjuk bemutatni az algoritmusok mükődését.
+
 \subsection{A példa rendszer}
 [Ide írd, hogy mi a példa rendszered és mit csinál, hétköznpai nyelven. Ez szándékosan informális, mert ez az egész fejezet arró lszól, hogy hogy lehet egy való világ beli rendszert így lemodellezni és letesztelni]
+
+Vegyük a példa rendszerünket. Ennek a rendszernek egyszerü állapotai vannak, amik között utak vezetnek, persze nem minden állapotból vezet minden állapotba.
+Ezekben az állapotátmenetekben nem teküntjük, hogy milyen más validációkat vagy egyéb opciókat lehet megtenni bennük, igy csak állapotoknak fogjuk tekinteni ezeket.
+A rendszerünkben egy olyan szoftver melyen keresztül be tudunk jelentkezni, jelszót és adatokat tudunk módositani, vásárolni tudunk , egyenleget tudjuk lekérni a folyószámlánkról amit a rendszerünk állitott ki. Valamint belépés után ki tudunk jelentkezni is.\\
+
+
+
+Ahhoz hogy jól le tudjuk tesztelni a rendszert, akkor minden állapotátmenetet figyelembe kell venni.
 
 \subsection{A példa rendszer gráfja}
 [Itt formalizálod az előzőleg szavakkal leírt rendszert és térsz ki röviden erre a folyamatra]
 
+Itt láthatjuk a rendszerónket, amit a fentiekben leirtunk, és megmutatjuk milyen utak vezetnek az állapotok között.\\
+
 \includegraphics[scale=0.5]{graf}
 
 \subsection{Algoritmus alkalmazása}
-[Itt a gárfon lefuttatod valamelyik algoritmust, a lépéseit szerintem nem kell ílrni, eléga kimenetet. Fontos, hogy a kimenetet "vissza transzformáld" emberi nyelvre, tehát azon túl hogy leírod a konkrét kimenetet, pl hogy C1->C2->C5->C9..  írd le ennek az értelmezését is azaz hogy "van három teszt esetünk, amik a bejelentkezést, vásárlást...]
 
-én még odairnám azt is hogy az adot algoritmus(a miénk hogyan egyszerüsiti ezt pl hogy a C1->C9-et vesszük egy sétának...)
+Be kell látnunk, hogy a rendszerünket az algoritmusunkkal lefedni elegendő csak három teszttel.
+Ezek a tesztek a következő képpen fognak lefutni:
+
+Először megpróbálunk bejelentkezni de nem sikerül.\\
+Majd bejelentkezés mellett igényelünk egy új jelszót, amivel ismételten megpróbálunk bejelentkezi, ezúttal sikeresen bejelentkezünk, ekkor a felhasználó adatlapjára navigálunk, majd megnézzük hogy ki tudunk e jelentkezni. Amint ezt sikeresen megtettük ismételten sikeresen bejeltkezünk és a felhasználó adatlapjáról lekérdezzük az egyenleget, majd kijelentkezünk. Ismételten bejelentkezünk sikeresen, majd a felhasználó adatlapjáról annak a módositására navigáljuk magunkat és sikeresen módositunk egy vagy több adatot tetszésszerüen. Ekkor ismét visszakerülünk a felhasználó adatlapjára innen tovább haladunk a vásárlás felé majd sikeresen vásárolunk. Sikeres vásárlás után vissza kerülünk ismét a felhasználó adatlapjára innen egy ismételt vásárlás során sikertelen vásárlást hajtunk végre.\\
+Majd sikeresen bejelentkezünk ismét, a felhasználó adatlapjáról pedig tovább haladunk a felhasználó adatlapjának módositása felé és sikertelenül módositjuk azt.\\
+
+A sikertelen vásárlás, módositás, bejelentkezés mind szándékosak, azért hogy megtudjuk a rendszerünk ezekben az esetekben milyen értékeket ad vissza, milyen válaszokat kapunk ha elrontunk valamit. Igy több eshetőségre tudunk felkészülni.\\
+
+Ha lefuttatnánk az allgoritmusunkat a rendszerünkön akkor a következő teszteseteket kaphatnánk:
+
+\item Bejelentkezés -> Sikertelen bejelentkezés
+\item Bejelentkezés -> Elfelejtett jelszó -> Bejelentkezés -> Sikeres bejelentkezés -> Felhasználó adatlapja -> Kijelenetkezés -> Bejelentkezés -> Sikeres bejelentkezés -> Felhasználó adatlapja -> Egyenleg lekérés -> Kijelenetkezés -> Bejelentkezés -> Sikeres bejelentkezés -> Felhasználó adatlapja -> Felhasználó adatlap módositás -> Sikeres módositás -> Felhasználó adatlapja -> Vásárlás -> Sikeres vásárlás -> Felhasználó adatlapja -> Vásárlás -> Sikertelen vásárlás
+\item Bejelentkezés -> Sikeres bejelentkezés -> Felhasználó adatlapja -> Felhasználó adatlap módositás -> Sikertelen módositás
+
+Ezzel a három tesztel lefedtük az összes utat amik az állapotátmenetek között a rendszerünkben.\\
+
+Persze ezeket a teszteket az algoritmusunk során tudjuk egyszerüsiteni a következőképpen:
+
+\item Bejelentkezés -> Sikertelen bejelentkezés
+\item Bejelentkezés -> Sikertelen módositás
+\item Bejelentkezés -> Elfelejtett jelszó -> Bejelentkezés -> Kijelenetkezés -> Bejelentkezés -> Egyenleg lekérés -> Bejelentkezés -> Felhasználó adatlap módositás -> Sikeres módositás -> Sikeres vásárlás -> Sikertelen vásárlás
 
 \section{Összefoglalás}
 [Értékeld az elvégzett munkát és adj pár továbbfejlesztési irányt]
