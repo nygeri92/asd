@@ -63,7 +63,7 @@ A szoftverek mindannapjaink segitésére szolgálnak. Igy a biztonságos haszná
 \subsection{Célkitűzés}
 [Ismertesd hogy mi a munkával a célod,  egy olyan matematikai modellt szeretnél adni ami segíti a tesztelést és hogy ez miért jó.]
 
-Célunk az lenne, hogy a szoftvertesztelést könyebben le tudjuk modellezni a matematika nyelvére. Ezáltal eg
+Célunk az lenne, hogy a szoftvertesztelést könyebben le tudjuk modellezni a matematika nyelvére, hogy egy olyan átfogó algoritmussal könnyedén megmondhassuk egy rendszerről, hogy hány tesztet kell minimálisan végrehajtanunk, amivel az összes esetet le tudjuk fedni.
 
 \subsection{Hasonló munkák}
 [Rövid kitérő arra hogy mi a mai "state of the field" azaz milyen megoldások, kutatási irányok vannak a tieden kívűl.]
@@ -132,11 +132,22 @@ Azaz bizonyos szoftverek segítségével teszteseteket hajtunk végre hogy nekü
 [Iee írd le, egyelőre formalizálás nélkül, hogy mi a teszt lefedettség. Azaz a rendszer funkcióit hogyan érdemes tesztelni, végállapotok tesztelése, stb. Itt említsd meg mindenképpen hogy a különböző teszt módszerek és szintek különböző lefedettésgeket kívánnak és te ezt a problémát fogod formalizálni és megoldani, de egyelőre ne tértj ki részletekre].
 
 
+A teszt lefedettséget gyakran számokkal szoktuk reprezentálni, az alapján hogy egy tesztelés mennyire alapos, valamint hol tartunk egy adott tesztelés során. A számokkal való reprezentálás miatt a teszt lefedettséget a tesztelési tevékenység értékelésére szokták használni.\\
+A tesztelés lefedettség lehetőséget ad a minőség mérésére, segit megbecsülni mennyi erőforrást kell még tesztelésre forditani.\\
+Más lefedettségi mérőszámokat kapunk más tesztelési technikák használata során. Lehet kód ellenőrzésének mértékét vagy a specifikációknak mennyire tesznek eleget a rendszer funkciói.\\
+Igy beláthatjuk, hogy a tesztelés során a lefedettség mérésadatai arra adnak információt, hogy a rendszerünk a korábban megadott feltételekhez képest mennyire tekinthető "késznek".
+
 \section{Formális modell}
+
+A fenti fejezetekben már megfogalmaztunk a tesztelés alapjait, problémáit. Továbbiakban be fogjuk mutatni, hogy ezeket a prblémákat és alapfogalmakat, hogyan is lehetne a matematika nyelvére leforditani.\\
+Ezekre a problémákra több definiciót és tételt fogunk alkalmazni amiket a későbbiekben majd részletesen is leirunk.  
+
 [Ide írj egy olyan bevezetőt, ami leírja hogy ez a fejezet a korábban megfogalmazott tesztelési problémák, matematikai formalizmusokkal történő leírására szolgál. Az így leírt problémára alkalamzhatók a matematika bizonyított eszközei, innetől dőlhetnek a definíciók és képletek :)]
 
 \subsection{Szükséges alapismeretek}
 [Ide írj valami ilyet: a formális modell matematikai eszközkészletének megértéshéz az alábbi fogalmakra lesz szükségünk. Ezek után ide gyűjtsd ki az összes olyan "gyenge" definíciót ami nem szigorúan tartozik egy-egy adott részhez, pl. azt hogy mi a gárf, mi a mátrix, stb. Ez egyfajta glossary ha úgy tetszik.]
+
+
 
 Most ismertetünk pár alapfogalmat, amit a kombinatorikában ismerünk és hasznosnak fogunk venni a bizonyítások és ismertetések során.\\
 
