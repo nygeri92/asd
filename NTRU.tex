@@ -36,7 +36,9 @@ Nyulasi Gergely\\
 \pagebreak
 
 \section{Bevezetés}
-[Ide írj egy rövid bevezetőt arról hogy miről fog szólni a szakdolgozat, ne menj részletekbe és ne írj definíciókat, ez egy általános dolog amit egy nem szakértőnek is meg kell értenie. Most átraktam ide egy későbbi fejezetből a leírásod]
+
+Manapság nagy hangsúlyt fektetünk a minőségre és annak biztosítására, mivel a minőséggel az értéket lehet reprezentálni és minél magasabb a minőség annál értékesebb az adott dolog, amit képvisel. A minőséget tesztelésekkel, próbákkal és egyéb módokon tudjuk ellenőrizni.
+Jelen esetben minket jobban érdekel a szoftvertesztelés és annak módjait járjuk körbe, de ezt majd később látni is fogjuk.\\
 
 Az első fejezetben bemutatjuk az aktuális témát, azaz a szoftvertesztelés automatizálását. Bemutatjuk továbbá a célunkat vele és hogy milyen munkákra tudjuk ezeket felhasználni.\\
 A második fejezetben ismertetni fogjuk, hogy milyen problémáink lehetnek a tesztelés során, valamint tesztelés alapjait.
@@ -46,24 +48,14 @@ A negyedik fejezetben bemutatjuk a pont és út fedéseket hogyan tudjuk hasznos
 Az ötödik fejezetben egy valódi példára mutatjuk meg hogyan is müködnek az algoritmusok. Milyen teszteseteket generálunk.\\
 Végül összefoglaljuk a tapasztalatainkat, rámutatunk hogy miért is fontosak ezek és hogy mikre lehet használni ezt a tudást.\\
 
-
-Manapság nagy hangsúlyt fektetünk a minőségre és annak biztosítására, mivel a minőséggel az értéket lehet reprezentálni és minél magasabb a minőség annál értékesebb az adott dolog, amit képvisel. A minőséget tesztelésekkel, próbákkal és egyéb módokon tudjuk ellenőrizni.
-Jelen esetben minket jobban érdekel a szoftvertesztelés és annak módjait járjuk körbe, de ezt majd később látni is fogjuk.\\
-
 \subsection{Téma aktualitása}
-[Itt írj egy kicsit arról hogy miért aktuálius a téma. Lehet rizsázni hogy nő az alkalamzások komplexitása ezért egyre ofntosabb a tesztelés, de nicns elég ember ezért senki nem csinálja és milyen jó lenne egyébknét is automatizálni, blablabla..]
 
 Ahhoz hogy átfogó képet kaphassunk a szoftvertesztelésről, elöszőr meg kell értenünk miért olyan fontosak számunkra a szoftverek és használatuk.\\ 
 A szoftverek mindannapjaink segitésére szolgálnak. Igy a biztonságos használatuk, megbizhatóságuk nagy fontosságot élvez. Erre használjuk a tesztelést, hogy meggyőzödjünk mennyire biztonságosak, megbizhatóak ezek.\\
 
-
-
-
-
 \subsection{Célkitűzés}
-[Ismertesd hogy mi a munkával a célod,  egy olyan matematikai modellt szeretnél adni ami segíti a tesztelést és hogy ez miért jó.]
 
-Célunk az lenne, hogy a szoftvertesztelést könyebben le tudjuk modellezni a matematika nyelvére, hogy egy olyan átfogó algoritmussal könnyedén megmondhassuk egy rendszerről, hogy hány tesztet kell minimálisan végrehajtanunk, amivel az összes esetet le tudjuk fedni.
+Célunk az lenne, hogy a szoftvertesztelést könyebben le tudjuk modellezni a matematika nyelvére, hogy egy olyan átfogó algoritmussal könnyedén megmondhassuk egy rendszerről, hogy hány tesztet kell minimálisan végrehajtanunk, amivel az összes esetet, az összes állapotot le tudjuk tesztelni.
 
 \subsection{Hasonló munkák}
 [Rövid kitérő arra hogy mi a mai "state of the field" azaz milyen megoldások, kutatási irányok vannak a tieden kívűl.]
@@ -73,12 +65,8 @@ Célunk az lenne, hogy a szoftvertesztelést könyebben le tudjuk modellezni a m
 
 \section{Probléma bemutatása}
 
-<<<<<<< HEAD
-Mindenki szeretné a feladatait minél hatékonyabban, optimálisan megoldani, hogy minél kevesebb idővel minél több feladatot tudjon megoldani. Megmutatjuk hogy a tesztelésnél is fontos ez a szempont és hogyan tudjuk elérni ezt, több különböző feladat esetén is.
-
-=======
-[Minden fejezet cím alá írj egy rövid összefogalót arról hogy miről fog szólni az adott rész, ide például írhatod hogy részletes bemutatásra kerül az alkalmazás terület és azonosítod azoakt a problémákat amiket meg akarsz oldani.]
->>>>>>> 05b350fb43b08aee1af8889b60f674f06e882467
+Vegyük a feladatok minél hatékonyabb, optimálisabb megoldását, hogy minél kevesebb idővel minél több feladatot tudjunk megoldani. Megmutatjuk, hogy a tesztelésnél is fontos ez a szempont és hogyan tudjuk elérni ezt, több különböző feladat esetén is.
+Valamint részletes bemutatásra kerül az alkalmazás terület és az is, hogy egy teljes rendszert, hogyan tudunk maximálisan letesztelni, vagy éppen csak részeket tesztelni belöle.
 
 \subsection{Tesztelés alapjai, szoftvertesztelés}
 
@@ -129,12 +117,15 @@ Teszt automatizálás: valamilyen szoftver használata különböző teszttevék
 Azaz bizonyos szoftverek segítségével teszteseteket hajtunk végre hogy nekünk ne kelljen manuálisan(humán erőforrás csökkentése) elvégezni őket. 
 
 \subsection{Teszt lefedettség}
-[Iee írd le, egyelőre formalizálás nélkül, hogy mi a teszt lefedettség. Azaz a rendszer funkcióit hogyan érdemes tesztelni, végállapotok tesztelése, stb. Itt említsd meg mindenképpen hogy a különböző teszt módszerek és szintek különböző lefedettésgeket kívánnak és te ezt a problémát fogod formalizálni és megoldani, de egyelőre ne tértj ki részletekre].
-
 
 A teszt lefedettséget gyakran számokkal szoktuk reprezentálni, az alapján hogy egy tesztelés mennyire alapos, valamint hol tartunk egy adott tesztelés során. A számokkal való reprezentálás miatt a teszt lefedettséget a tesztelési tevékenység értékelésére szokták használni.\\
 A tesztelés lefedettség lehetőséget ad a minőség mérésére, segit megbecsülni mennyi erőforrást kell még tesztelésre forditani.\\
 Más lefedettségi mérőszámokat kapunk más tesztelési technikák használata során. Lehet kód ellenőrzésének mértékét vagy a specifikációknak mennyire tesznek eleget a rendszer funkciói.\\
+
+\begin{defin}
+Lefedettség: Annak százalékos mérőszáma, hogy az adott lefedettségi elemet milyen arányban hajtotta végre a teszteszköz. ~\cite{htb:masterfield}
+\end{defin}
+
 Igy beláthatjuk, hogy a tesztelés során a lefedettség mérésadatai arra adnak információt, hogy a rendszerünk a korábban megadott feltételekhez képest mennyire tekinthető "késznek".
 
 \section{Formális modell}
@@ -147,9 +138,7 @@ Ezekre a problémákra több definiciót és tételt fogunk alkalmazni amiket a 
 \subsection{Szükséges alapismeretek}
 [Ide írj valami ilyet: a formális modell matematikai eszközkészletének megértéshéz az alábbi fogalmakra lesz szükségünk. Ezek után ide gyűjtsd ki az összes olyan "gyenge" definíciót ami nem szigorúan tartozik egy-egy adott részhez, pl. azt hogy mi a gárf, mi a mátrix, stb. Ez egyfajta glossary ha úgy tetszik.]
 
-
-
-Most ismertetünk pár alapfogalmat, amit a kombinatorikában ismerünk és hasznosnak fogunk venni a bizonyítások és ismertetések során.\\
+A tesztelés formális modeljének matematikai megértéséért az alábbi fogalmakra lesz szükségünk:
 
 Ilyen például, hogy mit is értünk gráf alatt, vagy hogyan is képzeljük el vagy reprezentáljuk.
 
@@ -161,10 +150,9 @@ A $G = (V,E)$ pár egy egyszerü gráf, ha $V \neq \emptyset$ és $E \subseteq \
 A $G$ gráf egy diagramja a $G$ egy olyan lerajzolása, amiben a csúcsoknak (síkbeli) pontok felelnek meg, éleknek pedig olyan síkgörbék, amelyek az adott él két végpontját kötik össze, önmagukat nem metszik, és más végpontokat elkerülnek. Az $e = {u, v}$ élt röviden $e = uv-vel$ jelöljük, $u-t$ és $v-t$ az $e$ él végpontjainak mondjuk. Az u és v csúcsok szomszédosak, ha $uv \in E$. Az $e$ és $f$ éleket párhuzamosnak nevezzük, ha végpontjaik azonosak. Hurokél az olyan él, aminek két végpontja megegyezik. A $G = (V,E)$ pár gráf, ha $V \neq \emptyset$, $E$ élhalmaz $V-n$, és párhuzamos és hurokél is megengedett. ~\cite{szam:Fleiner}
 \end{defin}
 
-Igy a kombinatorikai tanulmányaink segítségünkre lesznek, hogy minél pontosabban tudjuk modellezni a tesztelések menetét, illetve hogy azt könnyebben elmagyarázhassuk.\\
-Mint már említettük a különböző teszteseteket tekinthetjük a kombinatorikában vett gráfokkal és azok élsorozataival.\\
+A gráfok és élsorozatok segitségével modellezni tudjuk a rendszerünket és azokon a tesztelések tipusait és menetét.\\
 
-Vegyük most azt, hogy mit is értünk élsorozaton és hozzá kapcsolódó definíciókat:
+Vegyük most azt, hogy mit is értünk élsorozaton és összeföggőségen:
 
 \begin{defin}
 A $G$ gráf élsorozata egy olyan $(v_1,e_1,v_2,e_2,\cdots,v_k)$ sorozat, amire $e_i \in E(G)$ és $e_i = v_iv_{i+1} (\forall 1 \leq i < k)$. A séta olyan élsorozat, aminek minden éle különböző. A körséta olyan séta, aminek kiinduló és végpontja azonos: $v_1 = v_k$. AZ út (ill. kör) olyan (kör)séta, aminek csúcsai (a végpontok azonosságától eltekintve) különbözők.\\
@@ -174,6 +162,10 @@ Egyszerü gráf esetén az út (kör) azonositható a hozzátartozó pontsorozat
 \begin{defin}
 A $G$ gráf összefüggő(öf), ha bármely két pontja között vezet séta. ~\cite{szam:Fleiner}
 \end{defin}
+
+\subsection{Útak és körök}
+
+Ismertetjük az utak illetve a körök fogalmát.\\
 
 \begin{defin}
 A $G$ gráfban pontosan akkor létezik $u$ és $v$ között séta, ha létezik $u$ és $v$ között út. ~\cite{szam:Fleiner}
@@ -211,7 +203,10 @@ Mivel egy körben (útban) szereplő minden csúcs különböző, ezért a Hamil
 Ha a véges G gráfban létezik Hamilton-kör (ill. Hamilton-út), akkor G-nek k tetszőleges pontját törölve, a keletkező gráfnak legfeljebb k (ill. k+1) komponense van. ~\cite{szam:Fleiner}
 \end{defin}
 
-Ezek a definíciók sajnos számunkra csak kis mértékben hasznosak. Mivel nekünk fontos az is hogy több különböző séta is áthaladhasson ugyanazon a ponton is vagy többször használhassunk egy élet, ilyen például, ha ugyanabba a pontba érkezünk, de több elágazás van amin szeretnénk elindulni, vagy ilyen ha egy élből több él is indul ki, amelyek egyenlő fontosak és csak az előbbi élből tudunk indulni.[TODO: ezt a mondatot bontsd szét kicsit]\\ 
+Ezeket a definíciókat csak korlátozottan használják. Fontos számunkra az is, hogy több különböző séta is áthaladhasson ugyanazon a ponton is, vagy többször használhassunk egy élet.
+Ilyen például, ha ugyanabba a pontba érkezünk, de több elágazás van amin szeretnénk elindulni, vagy ilyen ha egy élből több él is indul ki, amelyek egyenlő fontosak és csak az előbbi élből tudunk indulni. Esetleg, ha visszakerülünk a kiindulási pontba és onnan tovább szeretnénk menni.\\
+
+\subsection{lefedés}
 
 A gráfokon való lefedést többféleképpen lehet nézni. Egyrészt pontok lefedése-, valamint élek lefedéséről lehet beszélni. Ezek alkalmazhatóak különböző feladatok megoldására vagy optimalizálásra.\\
 Az útlefedést vissza tudjuk vezetni a páros gráfokban alkalmazott maximális párosítás keresésre.\\
@@ -224,6 +219,13 @@ A $G$ gráf k szinnel szinezhető, ha $G$ minden csúcsa kiszinezhető k adott s
 
 Amikor egy gráf $kiszinezéséről$ beszélünk (hacsak nem jelezzük az ellenkezőjét), mindig a csúcsoknak a fenti szabály szerinti színezésére gondolunk. Egy konkrét színezés esetén az azonos színűre festett csúcsok halmazát (amely halmaz tehát nem feszíthet élt) $szinosztálynak$ nevezzük. Jegyezzük meg, hogy a színosztály mindig a színezéstől függ, és általában nem egyértelmű, hogy egy $G$ gráfot hogyan is kell $\chi(G)$ színnel kiszínezni.
 
+
+
+
+
+
+
+
 \begin{defin}
 A $G$ gráf páros gráf, ha $G$ két szinnel kiszinezhető, azaz, ha $\chi(G) \leq 2$. ~\cite{szam:Fleiner}
 \end{defin}
@@ -233,6 +235,24 @@ A fenti definíció azzal ekvivalens, hogy a $G$ gráf pontosan akkor páros, ha
 \end{megj}
 
 Ha már tudjuk hogy mit jelent a páros gráf akkor meg tudjuk határozni a párosítást valamit a maximális párosításokat egy gráfban.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Rendszer modell}
 [Itt írd le magát a rendszer modelljét, hogy vanna állapotk és átmenetek, de egyelrőe ne írj magáról a lefedéskről és utakról.]
@@ -288,7 +308,7 @@ Ezek után szeretnénk olyan gráf bejárást találni, amivel az összes csúcs
 Ezt a két esetet többféle módon meg tudjuk oldani algoritmusokkal.
 Viszont a lehető legkevesebb úttal megoldani ezt már nem olyan egyszerű.\\
 Ennek az optimalizálására keresünk megoldást a következőkben.
-Valamint ehhez az eléréshez tudnunk kell további definíciókat, és hogy miért is keresünk ilyet?
+Optimális megoldás eléréshez szükségesek az alábbi definiciók ismerete.
 Ilyen pont- és élfedéseket regressziós-, rendszer- vagy smoke tesztelésnek is nevezhetünk. De ezek mind különböző dolgokat jelentenek és fednek le.\\
 
 \begin{defin}
@@ -307,7 +327,7 @@ Smoke teszt: A definiált, illetve tervezett tesztek egy olyan halmaza, amely ko
 Állapot-tábla: Egy táblázat, ami minden egyes állapotra és lehetséges eseményre mutatja az állapotátmeneteket, megjelenitve az érvényes és érvénytelen átmeneteket is. ~\cite{htb:masterfield}
 \end{defin}
 
-Ezek a főbb tesztek, amelyeket tekinteni fogunk és megnézzük, hogy tudjuk-e esetleg modellezni őket.\\
+Ezek a főbb tesztek, amelyeket tekinteni fogunk és megnézzük, hogy lehetséges-e esetleg modellezni őket.\\
 \pagebreak
 
 \section{A probléma megoldása: Pont- és Útfedési algoritmusok}
@@ -366,15 +386,12 @@ Legyen $D = (V,A)$ egy aciklikus irányított gráf, aminek pontosan egy kiindul
 Legyen $D = (V,A)$ egy aciklikus irányított gráf és $B \subseteq A$. Ekkor a minimális útfedések száma $B$-ben megegyezik a $|C \cap B|$ maximumával, ahol $C$ az irányított vágások számával. ~\cite{bomze1999maximum}
 \end{tetel}
 
-<<<<<<< HEAD
-\pagebreak
+
 
 \section{Pont- és Útfedési algoritmusok}
 
+ide még
 
-
-=======
->>>>>>> 05b350fb43b08aee1af8889b60f674f06e882467
 \subsection{Útlefedési algoritmus gráfon}
 
 Vegyük $G$ gráfot, aminek a csúcsai a következők:
@@ -426,6 +443,7 @@ Ha pedig nincs javitó alternáló út, akkor M maximális párositás, és kön
 [Írd le, hogy demonstárlandó az elképzelés műkődését, most gy egyszerű rendszeren be fogod mutatni a dolgot.]
 
 Vegyünk egy rendszert, aminek a következő állapotai vannak:
+\begin{enumerate}
 \item Bejelentkezés
 \item Sikertelen bejelentkezés
 \item Elfelejtett jelszó
@@ -439,6 +457,7 @@ Vegyünk egy rendszert, aminek a következő állapotai vannak:
 \item Sikertelen módositás
 \item Sikertelen vásárlás
 \item Sikeres vásárlás
+\end{enumerate}
 
 Ezek között az állapotok között eljuthatunk egyikből a másikba, de nem mindenhonnan vezet mindenhova út, amit a lenti modell mutatja is.
 Ez egy egyszerü remdszer és továbbiakban ezen fogjuk bemutatni az algoritmusok mükődését.
@@ -473,18 +492,21 @@ Majd sikeresen bejelentkezünk ismét, a felhasználó adatlapjáról pedig tov�
 A sikertelen vásárlás, módositás, bejelentkezés mind szándékosak, azért hogy megtudjuk a rendszerünk ezekben az esetekben milyen értékeket ad vissza, milyen válaszokat kapunk ha elrontunk valamit. Igy több eshetőségre tudunk felkészülni.\\
 
 Ha lefuttatnánk az allgoritmusunkat a rendszerünkön akkor a következő teszteseteket kaphatnánk:
-
+\begin{enumerate}
 \item Bejelentkezés -> Sikertelen bejelentkezés
 \item Bejelentkezés -> Elfelejtett jelszó -> Bejelentkezés -> Sikeres bejelentkezés -> Felhasználó adatlapja -> Kijelenetkezés -> Bejelentkezés -> Sikeres bejelentkezés -> Felhasználó adatlapja -> Egyenleg lekérés -> Kijelenetkezés -> Bejelentkezés -> Sikeres bejelentkezés -> Felhasználó adatlapja -> Felhasználó adatlap módositás -> Sikeres módositás -> Felhasználó adatlapja -> Vásárlás -> Sikeres vásárlás -> Felhasználó adatlapja -> Vásárlás -> Sikertelen vásárlás
 \item Bejelentkezés -> Sikeres bejelentkezés -> Felhasználó adatlapja -> Felhasználó adatlap módositás -> Sikertelen módositás
+\end{enumerate}
 
 Ezzel a három tesztel lefedtük az összes utat amik az állapotátmenetek között a rendszerünkben.\\
 
 Persze ezeket a teszteket az algoritmusunk során tudjuk egyszerüsiteni a következőképpen:
-
+\begin{enumerate}
 \item Bejelentkezés -> Sikertelen bejelentkezés
 \item Bejelentkezés -> Sikertelen módositás
 \item Bejelentkezés -> Elfelejtett jelszó -> Bejelentkezés -> Kijelenetkezés -> Bejelentkezés -> Egyenleg lekérés -> Bejelentkezés -> Felhasználó adatlap módositás -> Sikeres módositás -> Sikeres vásárlás -> Sikertelen vásárlás
+\end{enumerate}
+
 
 \section{Összefoglalás}
 [Értékeld az elvégzett munkát és adj pár továbbfejlesztési irányt]
