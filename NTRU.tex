@@ -58,10 +58,17 @@ A szoftverek mindannapjaink segitésére szolgálnak. Igy a biztonságos haszná
 Célunk az lenne, hogy a szoftvertesztelést könyebben le tudjuk modellezni a matematika nyelvére, hogy egy olyan átfogó algoritmussal könnyedén megmondhassuk egy rendszerről, hogy hány tesztet kell minimálisan végrehajtanunk, amivel az összes esetet, az összes állapotot le tudjuk tesztelni.
 
 \subsection{Hasonló munkák}
-[Rövid kitérő arra hogy mi a mai "state of the field" azaz milyen megoldások, kutatási irányok vannak a tieden kívűl.]
 
+Nagyon sok kutatási irányt találhatunk az interneten, amik kapcsolodnak a témánkhoz. Ezek között vannak különböző rendszerek automatizálását segitő szoftverek.\\
+Ilyen például az alábbi pár rendszer amit ismertetni fogunk nagy vonalakban.
 
+\begin{enumerate}
+\item Functionize: Új vagy módositott applikációk tesztelésére használják, amivel új teszteket tudnak létrehozni, meglévőeket tudnak karbantartani, vagy futtatni ezeket. 
+\item Tricentis: Automatikusan ellenőrzi a tesztelt alkalmazást, hogy segítsen meghatározni a teszteseteket.
+\item Eggplant: Segítségével egyszerűen beállíthatja és kezelheti a valódi eszközök központosított tesztlaborját, amelyet a tesztelők bárhonnan elérhetnek.
+\end{enumerate}
 
+Láthatjuk, hogy sok program sok eltérő segitséget nyújt számunkra a teszteléshez vagy a tesztelés folyamatán.\\
 
 \section{Probléma bemutatása}
 
@@ -163,97 +170,6 @@ Egyszerü gráf esetén az út (kör) azonositható a hozzátartozó pontsorozat
 A $G$ gráf összefüggő(öf), ha bármely két pontja között vezet séta. ~\cite{szam:Fleiner}
 \end{defin}
 
-\subsection{Útak és körök}
-
-Ismertetjük az utak illetve a körök fogalmát.\\
-
-\begin{defin}
-A $G$ gráfban pontosan akkor létezik $u$ és $v$ között séta, ha létezik $u$ és $v$ között út. ~\cite{szam:Fleiner}
-\end{defin}
-
-További bejárások is lehetségesek, amelyek
-\begin{enumerate}
-\item élekre szól(Euler), valamint 
-\item csúcsokra szól(Hamilton).
-\end{enumerate}
-
-Ezek után a következő definíciókat lehet megállapítani:
-
-\begin{defin}
-A $G = (V,E)$ gráf Euler-sétája (Euler-körsétája) a G gráf egy olyan (kör)sétája, amely G minden élét (pontosan egyszer tartalmazza). ~\cite{szam:Fleiner}
-\end{defin}
-
-\begin{tetel}
-Ha a $G = (V,E)$ gráf véges és összefüggő, akkor 
-\begin{enumerate}
-\item G-nek pontosan akkor van Euler-körsétája, ha G minden csúcsa páros fokú, ill.
-\item G-nek pontosan akkor van Euler-sétája, ha G-nek 0 vagy 2 páratlan fokú csúcsa van.
-\end{enumerate} ~\cite{szam:Fleiner}
-\end{tetel}
-
-Ha élek helyett csúcsokról beszélünk, akkor egy másik fontos fogalomhoz jutunk el.
-
-\begin{defin}
-A G gráf Hamilton-köre (Hamilton-útja) a G olyan köre (útja), mely G minden csúcsát tartalmazza. ~\cite{szam:Fleiner}
-\end{defin}
-
-Mivel egy körben (útban) szereplő minden csúcs különböző, ezért a Hamilton-kör (Hamilton-út) a G gráf olyan bejárása, mely G minden csúcsát pontosan egyszer érinti.
-
-\begin{defin}
-Ha a véges G gráfban létezik Hamilton-kör (ill. Hamilton-út), akkor G-nek k tetszőleges pontját törölve, a keletkező gráfnak legfeljebb k (ill. k+1) komponense van. ~\cite{szam:Fleiner}
-\end{defin}
-
-Ezeket a definíciókat csak korlátozottan használják. Fontos számunkra az is, hogy több különböző séta is áthaladhasson ugyanazon a ponton is, vagy többször használhassunk egy élet.
-Ilyen például, ha ugyanabba a pontba érkezünk, de több elágazás van amin szeretnénk elindulni, vagy ilyen ha egy élből több él is indul ki, amelyek egyenlő fontosak és csak az előbbi élből tudunk indulni. Esetleg, ha visszakerülünk a kiindulási pontba és onnan tovább szeretnénk menni.\\
-
-\subsection{lefedés}
-
-A gráfokon való lefedést többféleképpen lehet nézni. Egyrészt pontok lefedése-, valamint élek lefedéséről lehet beszélni. Ezek alkalmazhatóak különböző feladatok megoldására vagy optimalizálásra.\\
-Az útlefedést vissza tudjuk vezetni a páros gráfokban alkalmazott maximális párosítás keresésre.\\
-
-Nézzük meg mit is jelent az hogy egy gráf páros, de előtte meg kell még értenünk azt is hogy mit értünk gráf színezésen is.
-
-\begin{defin}
-A $G$ gráf k szinnel szinezhető, ha $G$ minden csúcsa kiszinezhető k adott szin valamelyikére úgy, hogy $G$ bármely élének két végpontja különböző szinü legyen. A $G$ gráf kromatikus száma $\chi(G) = k$, ha $G$ kiszinezhető k szinnel, de k-1 szinnel még nem. ~\cite{szam:Fleiner}
-\end{defin}
-
-Amikor egy gráf $kiszinezéséről$ beszélünk (hacsak nem jelezzük az ellenkezőjét), mindig a csúcsoknak a fenti szabály szerinti színezésére gondolunk. Egy konkrét színezés esetén az azonos színűre festett csúcsok halmazát (amely halmaz tehát nem feszíthet élt) $szinosztálynak$ nevezzük. Jegyezzük meg, hogy a színosztály mindig a színezéstől függ, és általában nem egyértelmű, hogy egy $G$ gráfot hogyan is kell $\chi(G)$ színnel kiszínezni.
-
-
-
-
-
-
-
-
-\begin{defin}
-A $G$ gráf páros gráf, ha $G$ két szinnel kiszinezhető, azaz, ha $\chi(G) \leq 2$. ~\cite{szam:Fleiner}
-\end{defin}
-
-\begin{megj}
-A fenti definíció azzal ekvivalens, hogy a $G$ gráf pontosan akkor páros, ha $G$ csúcsai két diszjunkt halmazba oszthatók úgy, hogy $G$ minden éle a két halmaz között fut, azaz mindkét halmazban van egy-egy csúcsa.(Ez egyébként a páros gráf definíciója.) Minden páros gráfnak van tehát két színosztálya, amelyek között az élei futnak. Azonban ez a két színosztály nem feltétlenül egyértelmű: például az n pontból álló üres gráf csúcsainak tetszőleges két osztályra bontása teljesíti a feltételt.
-\end{megj}
-
-Ha már tudjuk hogy mit jelent a páros gráf akkor meg tudjuk határozni a párosítást valamit a maximális párosításokat egy gráfban.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \subsection{Rendszer modell}
 [Itt írd le magát a rendszer modelljét, hogy vanna állapotk és átmenetek, de egyelrőe ne írj magáról a lefedéskről és utakról.]
 
@@ -291,18 +207,70 @@ Ezeket a következőképp tudjuk elképzelni:
 $D = (V,A)$ irányitott gráf, ha $V \neq \emptyset$ és $A \subseteq V^2$. (Minden élnek van egy irányitása. A diagramon nyilakkal szokás jelölni. Párhuzamos és hurokél itt is értelmezhető, és akár mindkét irányú él be lehet húzva két pont között. Az irányitatlan fogalmak jó része értelemszerüen kiterjed.) ~\cite{szam:Fleiner}
 \end{defin}
 
+\subsection{Formalizált probléma}
+[Itt írod le a az egész lényegét, hogy van a grádof amin bejárásokat keresel, és hogy ez hogy viszonyul az egyes tesztelési fogalmakhoz. Itt igyekezz akár egy mondaotn belül is összekötni a két világot, ez egy kritikus fejezet, emrt valószínűleg ezt fogják leginkább nézni mindkét "oldalról"]
+
+Az elözőekben beláttuk, hogy legegyszerübben gráfként tudjuk modellezni a tesztelendő rendszerünket. Azonban nem beszéltünk arról hogy a gráfunkban hogyan tudunk mozogni az egyes állapotok között, hogy a tesztjeink optimálisan haladhassanak. Igy ismertetjük az utak illetve a körök fogalmát.\\
+
+\subsection{Utak és körök}
+
+\begin{defin}
+A $G$ gráfban pontosan akkor létezik $u$ és $v$ között séta, ha létezik $u$ és $v$ között út. ~\cite{szam:Fleiner}
+\end{defin}
+
+További bejárások is lehetségesek, amelyek
+\begin{enumerate}
+\item élekre szól(Euler), valamint 
+\item csúcsokra szól(Hamilton).
+\end{enumerate}
+
+Ezek után a következő definíciókat lehet megállapítani:
+
+\begin{defin}
+A $G = (V,E)$ gráf Euler-sétája (Euler-körsétája) a G gráf egy olyan (kör)sétája, amely G minden élét (pontosan egyszer tartalmazza). ~\cite{szam:Fleiner}
+\end{defin}
+
+\begin{tetel}
+Ha a $G = (V,E)$ gráf véges és összefüggő, akkor 
+\begin{enumerate}
+\item G-nek pontosan akkor van Euler-körsétája, ha G minden csúcsa páros fokú, ill.
+\item G-nek pontosan akkor van Euler-sétája, ha G-nek 0 vagy 2 páratlan fokú csúcsa van.
+\end{enumerate} ~\cite{szam:Fleiner}
+\end{tetel}
+
+Ha élek helyett csúcsokról beszélünk, akkor egy másik fontos fogalomhoz jutunk el.
+
+\begin{defin}
+A G gráf Hamilton-köre (Hamilton-útja) a G olyan köre (útja), mely G minden csúcsát tartalmazza. ~\cite{szam:Fleiner}
+\end{defin}
+
+Tudjuk, hogy egy körben (útban) szereplő minden csúcs különböző, ezért a Hamilton-kör (Hamilton-út) a G gráf olyan bejárása, mely G minden csúcsát pontosan egyszer érinti.
+
+\begin{defin}
+Ha a véges G gráfban létezik Hamilton-kör (ill. Hamilton-út), akkor G-nek k tetszőleges pontját törölve, a keletkező gráfnak legfeljebb k (ill. k+1) komponense van. ~\cite{szam:Fleiner}
+\end{defin}
+
+Ezeket a definíciókat csak korlátozottan használják. Fontos számunkra az is, hogy több különböző séta is áthaladhasson ugyanazon a ponton is, vagy többször használhassunk egy élet.
+Ilyen például, ha ugyanabba a pontba érkezünk, de több elágazás van amin szeretnénk elindulni, vagy ilyen ha egy élből több él is indul ki, amelyek egyenlő fontosak és csak az előbbi élből tudunk indulni. Esetleg, ha visszakerülünk a kiindulási pontba és onnan tovább szeretnénk menni.\\
+
 \begin{defin}
 Egy $G$ (irányitott) gráf aciklikusnak mondunk, ha $G$ nem tartalmaz (irányitott) kört. ~\cite{szam:Fleiner}
 \end{defin}
 
-\subsection{Formalizált probléma}
-[Itt írod le a az egész lényegét, hogy van a grádof amin bejárásokat keresel, és hogy ez hogy viszonyul az egyes tesztelési fogalmakhoz. Itt igyekezz akár egy mondaotn belül is összekötni a két világot, ez egy kritikus fejezet, emrt valószínűleg ezt fogják leginkább nézni mindkét "oldalról"]
+Továbbá áttérünk a lefedések definiciójára és azok megérétésére, hogy a teszteket amiket vizsgálunk könnyebb legyen elképzelnünk.\\
 
+\subsection{Lefedés}
 
+A gráfokon való lefedést többféleképpen lehet nézni. Egyrészt pontok lefedése-, valamint élek lefedéséről lehet beszélni. Ezek alkalmazhatóak különböző feladatok megoldására vagy optimalizálásra.\\
+Az útlefedést vissza tudjuk vezetni a páros gráfokban alkalmazott maximális párosítás keresésre.\\
 
+Nézzük meg mit is jelent az hogy egy gráf páros, de előtte meg kell még értenünk azt is hogy mit értünk gráf színezésen is.
 
+\begin{defin}
+A $G$ gráf k szinnel szinezhető, ha $G$ minden csúcsa kiszinezhető k adott szin valamelyikére úgy, hogy $G$ bármely élének két végpontja különböző szinü legyen. A $G$ gráf kromatikus száma $\chi(G) = k$, ha $G$ kiszinezhető k szinnel, de k-1 szinnel még nem. ~\cite{szam:Fleiner}
+\end{defin}
 
-
+Amikor egy gráf $kiszinezéséről$ beszélünk (hacsak nem jelezzük az ellenkezőjét), mindig a csúcsoknak a fenti szabály szerinti színezésére gondolunk. Egy konkrét színezés esetén az azonos színűre festett csúcsok halmazát (amely halmaz tehát nem feszíthet élt) $szinosztálynak$ nevezzük. Jegyezzük meg, hogy a színosztály mindig a színezéstől függ, és általában nem egyértelmű, hogy egy $G$ gráfot hogyan is kell $\chi(G)$ színnel kiszínezni.
 
 Ezek után szeretnénk olyan gráf bejárást találni, amivel az összes csúcsot vagy összes élet le tudjuk fedni [a rendszer állapotátmeneti gráfjában.].
 Ezt a két esetet többféle módon meg tudjuk oldani algoritmusokkal.
@@ -331,8 +299,25 @@ Ezek a főbb tesztek, amelyeket tekinteni fogunk és megnézzük, hogy lehetség
 \pagebreak
 
 \section{A probléma megoldása: Pont- és Útfedési algoritmusok}
+
+asd
+Vegyük először a párositás definicióját, majd a maximális párositások definiciójait, hogy a modellezett rendszerünkben tudjunk maximális párositást kereső algoritmust használni.
+
+\subsection{Párositás}
+
+\begin{defin}
+A $G$ gráf páros gráf, ha $G$ két szinnel kiszinezhető, azaz, ha $\chi(G) \leq 2$. ~\cite{szam:Fleiner}
+\end{defin}
+
+\begin{megj}
+A fenti definíció azzal ekvivalens, hogy a $G$ gráf pontosan akkor páros, ha $G$ csúcsai két diszjunkt halmazba oszthatók úgy, hogy $G$ minden éle a két halmaz között fut, azaz mindkét halmazban van egy-egy csúcsa.(Ez egyébként a páros gráf definíciója.) Minden páros gráfnak van tehát két színosztálya, amelyek között az élei futnak. Azonban ez a két színosztály nem feltétlenül egyértelmű: például az n pontból álló üres gráf csúcsainak tetszőleges két osztályra bontása teljesíti a feltételt.
+\end{megj}
+
+Ha már tudjuk hogy mit jelent a páros gráf akkor meg tudjuk határozni a párosítást valamit a maximális párosításokat egy gráfban.
+
 \subsection{Maximális párositás}
-[Ezt a fejezetet kicsit "árávnak" érezm az egészben, legyen jobbna bevezetve hogy mirét van itt és mi a célja]
+
+Ismertetni fogunk pár alap definiciót és tételt, amik a maximális párositásokban segitenek nekünk. Ezek alapján tudunk majd maximélis párositást kereső algoritmusokat találni, hogy a fő feladatunkban majd azokat használhassuk, mert erre fog épülni a főproblémánk megoldása.\\
 
 \begin{defin}
 Adott $G$ gráf esetén $\nu(G)$ jelöli a $G$ független élhalmazai közül a maximális méretét, azaz $G$ maximális párositásának elemszámát. ~\cite{szam:Fleiner}
@@ -369,7 +354,7 @@ Legyen $D = (V,A)$ egy  aciklikus irányított gráf. A minimális irányított 
 \end{tetel}
 
 \begin{tetel}
-Legyen $D = (V,A)$ egy aciklikus irányított gráf. Ekkor a minimális út lefedések száma ami lefedi az összes élet megegyezik a maximális száma azoknak az éleknek amelyek semelyik kettő nincs összekötve az irányított útban. ~\cite{bomze1999maximum}
+Legyen $D = (V,A)$ egy aciklikus irányított gráf. Ekkor a minimális út lefedések száma ami lefedi az összes élet megegyezik a maximális számával azoknak az éleknek, amellyek semelyik kettő nincs összekötve az irányított útban. ~\cite{bomze1999maximum}
 \end{tetel}
 
 Valamint a húrok fedésére tudjuk, hogy:
@@ -386,11 +371,12 @@ Legyen $D = (V,A)$ egy aciklikus irányított gráf, aminek pontosan egy kiindul
 Legyen $D = (V,A)$ egy aciklikus irányított gráf és $B \subseteq A$. Ekkor a minimális útfedések száma $B$-ben megegyezik a $|C \cap B|$ maximumával, ahol $C$ az irányított vágások számával. ~\cite{bomze1999maximum}
 \end{tetel}
 
+Ezekkel a tételekkel könnyen kereshetünk egy gráfon belül minimális útfedéseket, hisz elegendő belátnunk, hogy maximális párositás segitségével kapunk ilyet.
 
 
 \section{Pont- és Útfedési algoritmusok}
 
-ide még
+Olyan algoritmusokat mutatunk be, melyek felhasználják a gráfok pontjait és éleit.
 
 \subsection{Útlefedési algoritmus gráfon}
 
@@ -416,7 +402,9 @@ Ekkor összekötjük $v_{alsó}$-t $u_{felső}$-vel akkor és csak akkor, ha $u$
 Hasonlóan, a részben rendezett halmaz felbomlik $k$ lánc uniójára akkor és csak akkor ha van olyan párosítás, ami $2k$ pont kivételével mindent bepárosít.\\
 Tehát keresni kell egy maximális párosítást, és az megmondja, hogy mi a minimális láncfelbontás. Sőt, magukat a láncokat is megtalálhatjuk ebből.
 
-Ekkor a következő lépés, hogy egy maximális párositást kereső algorimtus segitségével lefutatjuk az elöbbiekben leirt algoritmusunkat, igy könyebben megkaphatjuk a teszteseteket, amiket keresünk.
+Ekkor a következő lépés, hogy egy maximális párositást kereső algorimtus segitségével lefutatjuk az elöbbiekben leirt algoritmusunkat, igy könyebben megkaphatjuk a párositásokat, amiket keresünk.\\
+Amint megtaláltuk a maximális párositásokat, akkor az elöbbi tételeket felhasználva láthatjuk, hogy létezik ebben a G gráfban minimális útfedés.\\
+Ha létezik minimális útfedés a G gráfban, akkor készen vagyunk. Ekkor egy útat vehetünk egy tesztesetnek és az útak összességét pedig tekinthetjük a tesztelés alatt létrehozott összes tesztesetnek.
 \pagebreak
 
 \subsection{Egyéb algoritmusok}
@@ -433,14 +421,13 @@ fedett $A$-beli pontok halmazát, $T$-vel az $U$-ból alternáló úton elérhet
 
 \subsubsection{Alternáló utas algoritmus}
 
-A Kőnig tétel iménti bizonyitásából hatékony algoritmust kaphatunk egy páros gráf maximális párositásának ill. minimális lefogó ponthalmazának megtalálására. Ha ugyanis a maximális folyamok meghatározására szolgáló javitó utas módszert a Kőnig tétel bizonyitásában leirt konstrukcióra alkalmazzuk, és eltekintünk az $s$-re ill. $t$-re illeszkedő élektől, akkor az alábbi eljárás adódik. Kiindulunk az üres párositásból, és azt javitgatjuk. Ha már találtunk egy M párositást, akkor tekintjük az M-hez tartozó segédgráfot, azaz M éleit B-ből A-ba irányitjuk, G egyéb éleit pedig A-ból B-be.\\
-Ha ebben a segédgráfban létezik egy P irányitott út egy A-beli, az aktuális M párositás által fedetlen pontból olyan B-beli pontba, melyet szintén nem fed a párositás, akkor ezen az úgynevezett alternáló úton az eddigi párositáséleket elhagyva, és P párositáson kivüli éleit bevéve (más szóval M helyett $M \Delta P$-t tekintve), egy eggyel nagyobb méretü párositást kapunk.\\
-kép\\
-Ha pedig nincs javitó alternáló út, akkor M maximális párositás, és könnyen található egy |M| csúcsot tartalmazó lefogó ponthalmaz is.
-
+Legyen G egy tetszőleges gráf, és E' a G egy párositása. Egy G-beli utat E'-alternáló útnak nevezünk, ha felváltva tartalmaz párositott és nem párositott éleket. Ekkor legyen E' a G gráf párositása, ha egy E'-alternáló út, melynek mindkét végponja párositatlan, akkor E'-re ez javitó út.
+Legyen G = (V,E) egy tetszőleges gráf és E' egy párositás benne. Ha E'-re nézve nincs javitó út G-ben, akkor E' a G egy maximális párositása. ~\cite{algelm:kat}\\
 
 \section{A megoldás alkalmazása egy példán}
 [Írd le, hogy demonstárlandó az elképzelés műkődését, most gy egyszerű rendszeren be fogod mutatni a dolgot.]
+
+A demonstrálandó 
 
 Vegyünk egy rendszert, aminek a következő állapotai vannak:
 \begin{enumerate}
@@ -463,20 +450,16 @@ Ezek között az állapotok között eljuthatunk egyikből a másikba, de nem mi
 Ez egy egyszerü remdszer és továbbiakban ezen fogjuk bemutatni az algoritmusok mükődését.
 
 \subsection{A példa rendszer}
-[Ide írd, hogy mi a példa rendszered és mit csinál, hétköznpai nyelven. Ez szándékosan informális, mert ez az egész fejezet arró lszól, hogy hogy lehet egy való világ beli rendszert így lemodellezni és letesztelni]
 
 Vegyük a példa rendszerünket. Ennek a rendszernek egyszerü állapotai vannak, amik között utak vezetnek, persze nem minden állapotból vezet minden állapotba.
 Ezekben az állapotátmenetekben nem teküntjük, hogy milyen más validációkat vagy egyéb opciókat lehet megtenni bennük, igy csak állapotoknak fogjuk tekinteni ezeket.
 A rendszerünkben egy olyan szoftver melyen keresztül be tudunk jelentkezni, jelszót és adatokat tudunk módositani, vásárolni tudunk , egyenleget tudjuk lekérni a folyószámlánkról amit a rendszerünk állitott ki. Valamint belépés után ki tudunk jelentkezni is.\\
 
-
-
-Ahhoz hogy jól le tudjuk tesztelni a rendszert, akkor minden állapotátmenetet figyelembe kell venni.
+Ahhoz hogy jól le tudjuk tesztelni a rendszert, akkor minden állapotátmenetet figyelembe kell venni.\\
 
 \subsection{A példa rendszer gráfja}
-[Itt formalizálod az előzőleg szavakkal leírt rendszert és térsz ki röviden erre a folyamatra]
 
-Itt láthatjuk a rendszerónket, amit a fentiekben leirtunk, és megmutatjuk milyen utak vezetnek az állapotok között.\\
+Itt láthatjuk a rendszerünket, amit a fentiekben leirtunk, és megmutatjuk milyen utak vezetnek az állapotok között.\\
 
 \includegraphics[scale=0.5]{graf}
 
@@ -510,6 +493,7 @@ Persze ezeket a teszteket az algoritmusunk során tudjuk egyszerüsiteni a köve
 
 \section{Összefoglalás}
 [Értékeld az elvégzett munkát és adj pár továbbfejlesztési irányt]
+
 
 
 \newpage
